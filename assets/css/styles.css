@@ -111,6 +111,11 @@ body {
     transition: all 0.5s;
 }
 
+/*Below means that the text value
+ of the data-type displays below the buttons.
+ The  after pseudo element is used to insert content
+after an element.*/
+
 .btn--big::after {
     content: attr(data-type);
     font-size: 1rem;
