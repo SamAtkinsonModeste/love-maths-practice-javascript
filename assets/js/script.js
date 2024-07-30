@@ -20,6 +20,11 @@ document.addEventListener("DOMContentLoaded", function() {
       });
     }
 
+    document.getElementById('answer-box').addEventListener('keydown', function(evt){
+          if (evt.key === "Enter") {
+             checkAnswer();
+          }
+    });
     runGame("addition");
 });
 
@@ -30,6 +35,9 @@ document.addEventListener("DOMContentLoaded", function() {
  */
 
 function runGame(gameType) {
+document.getElementById("answer-box").value = "";
+document.getElementById("answer-box").focus();
+
     //STEPS:Create two random numbers between 1 and 25
     //NOTE: The reason why we add the plus one is so we do not get zero as a number
   let num1 = Math.floor(Math.random() * 25) + 1;
@@ -54,6 +62,7 @@ function runGame(gameType) {
  */
 function checkAnswer() {
 
+  
   let userAnswer = parseInt(document.getElementById("answer-box").value);
   let calculatedAnswer = calculateCorrectAnswer();
   console.log(calculatedAnswer);
@@ -66,8 +75,7 @@ function checkAnswer() {
       alert(`Awwww.... you answered ${userAnswer}. The correct answer was ${calculatedAnswer[0]}!`);
       incrementWrongAnswer();
   }
-//I ADDED BELOW to clear the input once user got confirmation 
-  document.getElementById("answer-box").value = "";
+
   runGame(calculatedAnswer[1]);
   
 
